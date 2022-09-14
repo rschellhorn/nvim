@@ -12,6 +12,8 @@ vim.opt.encoding = 'utf-8'
 vim.opt.expandtab = true
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = 'syntax'
+vim.opt.laststatus = 3
+vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.ruler = true
 vim.opt.shiftwidth = 2
@@ -34,8 +36,24 @@ require('dressing').setup {
 
 }
 
+require('neotest').setup {
+  adapters = {
+    require('neotest-rspec')
+  }
+}
+
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'ruby' }
+  ensure_installed = { 'ruby', 'typescript' },
+  indent = {
+    enable = true
+  },
+  highlight = {
+    enable = true,
+    disable = { 'ruby' }
+  },
+  endwise = {
+    enable = true
+  }
 }
 
 
@@ -53,7 +71,7 @@ require('telescope').setup {
 require('vgit').setup {
   settings = {
     live_blame = {
-      enabled = false
+      enabled = false -- :VGit toggle_live_blame
     },
     authorship_code_lens = {
       enabled = false
@@ -62,6 +80,9 @@ require('vgit').setup {
 }
 
 require('nvim-tree').setup {
+  view = {
+    signcolumn = 'no'
+  },
   filters = {
     custom = {
       "^.git$",
@@ -72,22 +93,29 @@ require('nvim-tree').setup {
 
 local cmp = require 'cmp'
 cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end
+  },
   mapping = cmp.mapping.preset.insert({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' }
   })
 })
 
 local on_attach = function(client, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
   vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader>j', require('telescope.builtin').lsp_references, bufopts)
-  vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>ra', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>rf', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, bufopts)
 
   -- Server capabilities spec:
   -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
@@ -123,7 +151,15 @@ require('lspconfig')['tsserver'].setup {
 }
 
 vim.keymap.set('n', '<leader>e', ':NvimTreeFindFile<cr>')
-vim.keymap.set('n', '<leader>w', ":lua require'telescope'.extensions.project.project{}<CR>")
+vim.keymap.set('n', '<leader>pb', require('telescope.builtin').git_branches)
+vim.keymap.set('n', '<leader>pf', require('telescope.builtin').find_files)
+vim.keymap.set('n', '<leader>ps', require('telescope.builtin').grep_string)
+vim.keymap.set('n', '<leader>pw', require('telescope').extensions.project.project)
+vim.keymap.set('n', '<leader>s', require('neotest').summary.toggle)
+vim.keymap.set('n', '<leader>t', function()
+    require('neotest').run.run()
+    require('neotest').summary.open()
+end)
 
 vim.cmd([[colorscheme gruvbox]])
 vim.cmd 'source ~/.config/nvim/configs/mappings.vim'

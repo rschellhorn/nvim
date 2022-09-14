@@ -1,11 +1,3 @@
-""""
-" b - buffer
-" c - change
-" f - find
-" g - git
-" t - test
-" w - window
-
 " Remap return to clear search highlight
 nnoremap <cr> :nohlsearch<cr>
 
