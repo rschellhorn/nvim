@@ -3,8 +3,13 @@ return require('packer').startup(function(use)
 
 	use 'tpope/vim-rails'
 	use 'ellisonleao/gruvbox.nvim'
-	use 'sheerun/vim-polyglot'
-	use 'stevearc/dressing.nvim'
+
+	use {
+    "stevearc/dressing.nvim",
+    config = function()
+      require('dressing').setup()
+    end
+  }
 
 	use {
 		"nvim-neotest/neotest",
@@ -23,7 +28,10 @@ return require('packer').startup(function(use)
 
 	use {
 		'williamboman/nvim-lsp-installer',
-		'neovim/nvim-lspconfig'
+		'neovim/nvim-lspconfig',
+    config = function()
+      require("nvim-lsp-installer").setup()
+    end
 	}
 
 	use {
@@ -38,7 +46,20 @@ return require('packer').startup(function(use)
   	'kyazdani42/nvim-tree.lua',
   	requires = {
     	'kyazdani42/nvim-web-devicons'
-  	}
+  	},
+    config = function()
+      require('nvim-tree').setup {
+        view = {
+          signcolumn = 'no'
+        },
+        filters = {
+          custom = {
+            "^.git$",
+            "^.vscode$"
+          }
+        }
+      }
+    end
 	}
 
 	use {
@@ -65,14 +86,29 @@ return require('packer').startup(function(use)
 
 	use {
   	'nvim-lualine/lualine.nvim',
-  	requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  	requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function()
+      require('lualine').setup()
+    end
 	}
 
-	use {
-		'tanvirtin/vgit.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim',
-			'kyazdani42/nvim-web-devicons'
-		}
-	}
+  use {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require('gitsigns').setup {
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+          vim.keymap.set('n', '<leader>hp', gs.preview_hunk, { desc = "Preview hunk" })
+          vim.keymap.set('n', '<leader>hb', gs.toggle_current_line_blame, { desc = "Blame" })
+        end
+      }
+    end
+  }
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup()
+    end
+  }
 end)
