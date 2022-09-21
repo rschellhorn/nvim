@@ -3,6 +3,28 @@ return require('packer').startup(function(use)
 
 	use 'tpope/vim-rails'
 	use 'ellisonleao/gruvbox.nvim'
+  use 'slim-template/vim-slim'
+
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = "*",
+    config = function()
+      require("toggleterm").setup()
+    end
+  }
+
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "v2.*",
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 
 	use {
     "stevearc/dressing.nvim",
@@ -38,7 +60,8 @@ return require('packer').startup(function(use)
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
 		requires = {
-			'RRethy/nvim-treesitter-endwise'
+			'RRethy/nvim-treesitter-endwise',
+      'JoosepAlviste/nvim-ts-context-commentstring'
 		}
 	}
 
