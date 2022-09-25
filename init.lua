@@ -37,7 +37,8 @@ require("bufferline").setup {
         highlight = "Directory",
         separator = true
       }
-    }
+    },
+    show_close_icon = false
   }
 }
 

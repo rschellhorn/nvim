@@ -1,9 +1,9 @@
 return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
+	use "wbthomason/packer.nvim"
 
-	use 'tpope/vim-rails'
-	use 'ellisonleao/gruvbox.nvim'
-  use 'slim-template/vim-slim'
+	use "tpope/vim-rails"
+	use "ellisonleao/gruvbox.nvim"
+  use "slim-template/vim-slim"
 
   use {
     "akinsho/toggleterm.nvim",
@@ -14,22 +14,32 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'akinsho/bufferline.nvim',
-    tag = "v2.*",
-    requires = 'kyazdani42/nvim-web-devicons'
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end
   }
 
   use {
-    'numToStr/Comment.nvim',
+    "akinsho/bufferline.nvim",
+    tag = "v2.*",
+    requires = "kyazdani42/nvim-web-devicons"
+  }
+
+  use {
+    "numToStr/Comment.nvim",
     config = function()
-      require('Comment').setup()
+      require("Comment").setup()
     end
   }
 
 	use {
     "stevearc/dressing.nvim",
     config = function()
-      require('dressing').setup()
+      require("dressing").setup()
     end
   }
 
