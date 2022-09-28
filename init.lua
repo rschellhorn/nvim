@@ -23,6 +23,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
+vim.opt.timeoutlen = 500
 vim.opt.wrap = false
 
 require('plugins')
@@ -65,7 +66,6 @@ require('nvim-treesitter.configs').setup {
   }
 }
 
-
 require('telescope').setup {
   defaults = {},
   extensions = {
@@ -95,13 +95,11 @@ cmp.setup({
 })
 
 local on_attach = function(client, bufnr)
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '<leader>j', require('telescope.builtin').lsp_references, bufopts)
-  vim.keymap.set('n', '<leader>ra', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<leader>rf', vim.lsp.buf.formatting, bufopts)
-  vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { noremap=true, silent=true, buffer=bufnr, desc = "Code Action" })
+  vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { noremap=true, silent=true, buffer=bufnr, desc = "Defenition" })
+  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, { noremap=true, silent=true, buffer=bufnr, desc = "Format" })
+  vim.keymap.set('n', '<leader>lj', vim.lsp.buf.references, { noremap=true, silent=true, buffer=bufnr, desc = "References" })
+  vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { noremap=true, silent=true, buffer=bufnr, desc = "Rename" })
 
   -- Server capabilities spec:
   -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
@@ -136,5 +134,5 @@ require('lspconfig')['tsserver'].setup {
   capabilities = capabilities
 }
 
-require('mappings')
+require("mappings")
 vim.cmd([[colorscheme gruvbox]])

@@ -128,13 +128,7 @@ return require('packer').startup(function(use)
   use {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require('gitsigns').setup {
-        on_attach = function(bufnr)
-          local gs = package.loaded.gitsigns
-          vim.keymap.set('n', '<leader>hp', gs.preview_hunk, { desc = "Preview hunk" })
-          vim.keymap.set('n', '<leader>hb', gs.toggle_current_line_blame, { desc = "Blame" })
-        end
-      }
+      require('gitsigns').setup()
     end
   }
 
@@ -142,6 +136,6 @@ return require('packer').startup(function(use)
     "folke/which-key.nvim",
     config = function()
       require("which-key").setup()
-    end
+    end,
   }
 end)
