@@ -21,9 +21,11 @@ vim.opt.signcolumn = 'yes'
 vim.opt.softtabstop = 0
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.showtabline = 2
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 500
+vim.opt.undofile = true
 vim.opt.wrap = false
 
 require('plugins')
@@ -34,18 +36,25 @@ require("bufferline").setup {
     offsets = {
       {
         filetype = "NvimTree",
-        text = "File Explorer",
-        highlight = "Directory",
-        separator = true
+        text = "Explorer",
+        highlight = "PanelHeading",
+        padding = 1,
       }
     },
-    show_close_icon = false
+    show_close_icon = false,
+    separator_style = 'thin'
   }
 }
 
 require('neotest').setup {
   adapters = {
     require('neotest-rspec')
+  },
+  icons = {
+    passed = "",
+    running = "",
+    failed = "",
+    unknown = "",
   }
 }
 
@@ -55,7 +64,8 @@ require('nvim-treesitter.configs').setup {
     enable = true
   },
   indent = {
-    enable = true
+    enable = true,
+    disable = { 'ruby' }
   },
   highlight = {
     enable = true,

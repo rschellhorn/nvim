@@ -1,8 +1,8 @@
 return require('packer').startup(function(use)
-	use "wbthomason/packer.nvim"
+  use "wbthomason/packer.nvim"
 
-	use "tpope/vim-rails"
-	use "ellisonleao/gruvbox.nvim"
+  use "tpope/vim-rails"
+  use "ellisonleao/gruvbox.nvim"
   use "slim-template/vim-slim"
 
   use {
@@ -36,50 +36,50 @@ return require('packer').startup(function(use)
     end
   }
 
-	use {
+  use {
     "stevearc/dressing.nvim",
     config = function()
       require("dressing").setup()
     end
   }
 
-	use {
-		"nvim-neotest/neotest",
-		requires = {
-			"antoinemadec/FixCursorHold.nvim",
-			"mfussenegger/nvim-dap",
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"olimorris/neotest-rspec",
-			"suketa/nvim-dap-ruby"
-		},
-		config = function()
-			require('dap-ruby').setup()
-		end
-	}
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "antoinemadec/FixCursorHold.nvim",
+      "mfussenegger/nvim-dap",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "olimorris/neotest-rspec",
+      "suketa/nvim-dap-ruby"
+    },
+    config = function()
+      require('dap-ruby').setup()
+    end
+  }
 
-	use {
-		'williamboman/nvim-lsp-installer',
-		'neovim/nvim-lspconfig',
+  use {
+    "williamboman/nvim-lsp-installer",
+    "neovim/nvim-lspconfig",
     config = function()
       require("nvim-lsp-installer").setup()
     end
-	}
+  }
 
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate',
-		requires = {
-			'RRethy/nvim-treesitter-endwise',
-      'JoosepAlviste/nvim-ts-context-commentstring'
-		}
-	}
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ':TSUpdate',
+    requires = {
+      "RRethy/nvim-treesitter-endwise",
+      "JoosepAlviste/nvim-ts-context-commentstring"
+    }
+  }
 
-	use {
-  	'kyazdani42/nvim-tree.lua',
-  	requires = {
-    	'kyazdani42/nvim-web-devicons'
-  	},
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons"
+    },
     config = function()
       require('nvim-tree').setup {
         view = {
@@ -93,37 +93,38 @@ return require('packer').startup(function(use)
         }
       }
     end
-	}
+  }
 
-	use {
-  	'nvim-telescope/telescope.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope-project.nvim',
-			'nvim-telescope/telescope-github.nvim'
-		},
-		config = function()
-			require('telescope').load_extension('gh')
-		end
-	}
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-github.nvim',
+      'nvim-telescope/telescope-project.nvim',
+    },
+    config = function()
+      require('telescope').load_extension('gh')
+      require'telescope'.load_extension('project')
+    end
+  }
 
-	use {
-		'hrsh7th/nvim-cmp',
-		requires = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-nvim-lsp-signature-help',
-			'hrsh7th/cmp-vsnip',
-			'hrsh7th/vim-vsnip'
-		}
-	}
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip'
+    }
+  }
 
-	use {
-  	'nvim-lualine/lualine.nvim',
-  	requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
       require('lualine').setup()
     end
-	}
+  }
 
   use {
     "lewis6991/gitsigns.nvim",

@@ -26,7 +26,6 @@ end
 local wk = require("which-key")
 wk.register({
   ["<esc>"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  e = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
   b = {
     name = "Buffers",
     f = { "<cmd>Telescope buffers<cr>", "Find" },
@@ -58,6 +57,11 @@ wk.register({
       "Git Diff",
     },
   },
+  d = {
+    name = "Debug",
+    b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
+    c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
+  },
   l = {
     name = "LSP",
     q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
@@ -79,14 +83,24 @@ wk.register({
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
-    p = { "<cmd>Telescope project<cr>", "Projects" },
+    p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Projects" },
   },
   t = {
     name = "Tests",
-    t = { run_test, "Nearest" },
+    a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+    e = { '<cmd>TermExec cmd="s %"<cr>', "Execute" },
+    f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "File" },
+    n = { "<cmd>lua require('neotest').run.run()<cr>", "Nearest" },
+    o = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
   },
   T = {
     name = "Treesitter",
     i = { ":TSConfigInfo<cr>", "Info" },
+  },
+  w = {
+    name = "Windows",
+    e = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+    t = { "<cmd>ToggleTerm<cr>", "Terminal" },
+    o = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Tests" },
   }
 }, { prefix = "<leader>" })
