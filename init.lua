@@ -77,27 +77,11 @@ require('telescope').setup {
   }
 }
 
-local cmp = require 'cmp'
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'nvim_lsp_signature_help' }
-  })
-})
-
 local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { noremap=true, silent=true, buffer=bufnr, desc = "Code Action" })
   vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { noremap=true, silent=true, buffer=bufnr, desc = "Defenition" })
   vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, { noremap=true, silent=true, buffer=bufnr, desc = "Format" })
+  vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, { noremap=true, silent=true, buffer=bufnr, desc = "Hover" })
   vim.keymap.set('n', '<leader>lj', vim.lsp.buf.references, { noremap=true, silent=true, buffer=bufnr, desc = "References" })
   vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { noremap=true, silent=true, buffer=bufnr, desc = "Rename" })
 
@@ -134,5 +118,7 @@ require('lspconfig')['tsserver'].setup {
   capabilities = capabilities
 }
 
+
+require("autocomplete")
 require("mappings")
 vim.cmd([[colorscheme gruvbox]])
