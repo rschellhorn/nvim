@@ -29,13 +29,28 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
+local lspconfig = require("lspconfig")
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers {
   function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {
+    lspconfig[server_name].setup {
       on_attach = on_attach,
       capabilities = capabilities
     }
   end,
+  ["sumneko_lua"] = function()
+    lspconfig.sumneko_lua.setup({
+      settings = {
+        Lua = {
+          diagnostics = {
+            -- Get the language server to recognize the 'vim', 'use' global
+            globals = {'vim', 'use', 'require'},
+          },
+          -- Do not send telemetry data containing a randomized but unique identifier
+          telemetry = {enable = false}
+        }
+      }
+    })
+  end
 }

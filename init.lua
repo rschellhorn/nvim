@@ -27,6 +27,7 @@ vim.opt.termguicolors = true
 vim.opt.timeoutlen = 500
 vim.opt.undofile = true
 vim.opt.wrap = false
+vim.opt.cmdheight = 0
 
 require('plugins')
 

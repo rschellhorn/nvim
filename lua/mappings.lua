@@ -18,11 +18,6 @@ end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-local run_test = function()
-  require('neotest').run.run()
-  require('neotest').summary.open()
-end
-
 local wk = require("which-key")
 wk.register({
   ["<esc>"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
