@@ -6,6 +6,12 @@ return require('packer').startup(function(use)
   use "slim-template/vim-slim"
 
   use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig"
+  }
+
+  use {
     "akinsho/toggleterm.nvim",
     tag = "*",
     config = function()
@@ -55,14 +61,6 @@ return require('packer').startup(function(use)
     },
     config = function()
       require('dap-ruby').setup()
-    end
-  }
-
-  use {
-    "williamboman/nvim-lsp-installer",
-    "neovim/nvim-lspconfig",
-    config = function()
-      require("nvim-lsp-installer").setup()
     end
   }
 
