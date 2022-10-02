@@ -1,3 +1,8 @@
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+  return
+end
+
 local kind_icons = {
   Class = " ",
   Color = " ",
@@ -26,7 +31,6 @@ local kind_icons = {
   Variable = " ",
 }
 
-local cmp = require 'cmp'
 cmp.setup({
   completion = {
     completeopt = 'menu,menuone,noinsert',
