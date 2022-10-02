@@ -28,6 +28,9 @@ local kind_icons = {
 
 local cmp = require 'cmp'
 cmp.setup({
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)

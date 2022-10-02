@@ -60,7 +60,7 @@ require('neotest').setup {
 }
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'ruby', 'typescript' },
+  ensure_installed = { "lua", "ruby", "typescript" },
   context_commentstring = {
     enable = true
   },
@@ -88,6 +88,7 @@ require('telescope').setup {
   }
 }
 
+require("diagnostics").setup()
 require("chain")
 require("autocomplete")
 require("mappings")

@@ -2,8 +2,9 @@ return require('packer').startup(function(use)
   use "wbthomason/packer.nvim"
 
   use "tpope/vim-rails"
-  use "ellisonleao/gruvbox.nvim"
   use "slim-template/vim-slim"
+
+  use "ellisonleao/gruvbox.nvim"
 
   use {
     "williamboman/mason.nvim",
