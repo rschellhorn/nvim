@@ -1,5 +1,5 @@
 require "user.options"
 require "user.keymaps"
 require "user.colorscheme"
-require("user.diagnostics").setup()
+require "user.diagnostics"
 require "user.plugins"
