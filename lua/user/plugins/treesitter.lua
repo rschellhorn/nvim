@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "lua", "ruby", "typescript" },
+  ensure_installed = { "lua", "ruby", "typescript", "yaml" },
   context_commentstring = {
     enable = true
   },
