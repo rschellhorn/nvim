@@ -5,6 +5,16 @@ vim.keymap.set('n', '<A-Down>', '<C-W>j')
 vim.keymap.set('n', '<A-Up>', '<C-W>k')
 vim.keymap.set('n', '<A-Right>', '<C-W>l')
 
+vim.keymap.set("n", "g1", '<cmd>lua require("bufferline").go_to_buffer(1, true)<cr>')
+vim.keymap.set("n", "g2", '<cmd>lua require("bufferline").go_to_buffer(2, true)<cr>')
+vim.keymap.set("n", "g3", '<cmd>lua require("bufferline").go_to_buffer(3, true)<cr>')
+vim.keymap.set("n", "g4", '<cmd>lua require("bufferline").go_to_buffer(4, true)<cr>')
+
+-- Save
+vim.keymap.set("n", "<C-s>", "<c-u>:update<cr>")
+vim.keymap.set("v", "<C-s>", "<c-c>:update<cr>")
+vim.keymap.set("i", "<C-s>", "<c-o>:update<cr>")
+
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
