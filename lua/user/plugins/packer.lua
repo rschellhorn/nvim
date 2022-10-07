@@ -61,6 +61,16 @@ return packer.startup(function(use)
   }
 
   use {
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  }
+
+  use {
+    'kosayoda/nvim-lightbulb',
+    requires = 'antoinemadec/FixCursorHold.nvim',
+  }
+
+  use {
     "akinsho/toggleterm.nvim",
     tag = "*"
   }
