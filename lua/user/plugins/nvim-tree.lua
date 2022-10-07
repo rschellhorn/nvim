@@ -4,7 +4,6 @@ if not ok then
 end
 
 tree.setup({
-  close_if_last_window = false,
   view = {
     signcolumn = 'no'
   },

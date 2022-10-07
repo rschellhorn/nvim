@@ -49,7 +49,7 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
 
-  use "tpope/vim-rails"
+  -- use "tpope/vim-rails"
   use "slim-template/vim-slim"
 
   use "ellisonleao/gruvbox.nvim"
