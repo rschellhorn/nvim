@@ -31,3 +31,6 @@ vim.opt.timeoutlen = 500
 vim.opt.undofile = true
 vim.opt.updatetime = 500
 vim.opt.wrap = false
+
+vim.opt.spell = true
+vim.opt.mousemodel = "popup"

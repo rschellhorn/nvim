@@ -104,7 +104,8 @@ wk.register({
   },
   w = {
     name = "Windows",
-    e = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+    b = { "<cmd>Neotree source=buffers<cr>", "Buffers" },
+    e = { "<cmd>Neotree toggle<CR>", "Explorer" },
     t = { "<cmd>ToggleTerm<cr>", "Terminal" },
     o = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Tests" },
   }

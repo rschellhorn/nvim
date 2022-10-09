@@ -49,7 +49,7 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
 
-  -- use "tpope/vim-rails"
+  use "tpope/vim-rails"
   use "slim-template/vim-slim"
 
   use "ellisonleao/gruvbox.nvim"
@@ -130,9 +130,12 @@ return packer.startup(function(use)
   }
 
   use {
-    "kyazdani42/nvim-tree.lua",
-    requires = {
-      "kyazdani42/nvim-web-devicons"
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = { 
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
     }
   }
 

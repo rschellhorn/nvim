@@ -8,7 +8,7 @@ bufferline.setup {
     diagnostics = "nvim_lsp",
     offsets = {
       {
-        filetype = "NvimTree",
+        filetype = "NeoTree",
         text = "Explorer",
         highlight = "Directory",
         padding = 1,
