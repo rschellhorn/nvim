@@ -15,5 +15,9 @@ tree.setup({
   },
   source_selector = {
     winbar = true,
+  },
+  window = {
+    position = "left",
+    width = 40,
   }
 })

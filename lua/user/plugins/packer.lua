@@ -52,6 +52,7 @@ return packer.startup(function(use)
   use "tpope/vim-rails"
   use "slim-template/vim-slim"
 
+  use "Mofiqul/dracula.nvim"
   use "ellisonleao/gruvbox.nvim"
 
   use {
@@ -83,12 +84,6 @@ return packer.startup(function(use)
         -- Configuration here, or leave empty to use defaults
       }
     end
-  }
-
-  use {
-    "akinsho/bufferline.nvim",
-    tag = "v2.*",
-    requires = "kyazdani42/nvim-web-devicons"
   }
 
   use {
@@ -132,7 +127,7 @@ return packer.startup(function(use)
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
@@ -148,7 +143,7 @@ return packer.startup(function(use)
     },
     config = function()
       require('telescope').load_extension('gh')
-      require'telescope'.load_extension('project')
+      require 'telescope'.load_extension('project')
     end
   }
 
