@@ -9,6 +9,7 @@ tree.setup({
     filtered_items = {
       show_hidden_count = false,
     },
+    use_libuv_file_watcher = true,
   },
   buffers = {
     follow_current_file = true,
