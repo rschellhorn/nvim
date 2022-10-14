@@ -16,6 +16,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>lj', "<cmd>:Telescope lsp_references<cr>", { noremap=true, silent=true, buffer=bufnr, desc = "References" })
     vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { noremap=true, silent=true, buffer=bufnr, desc = "Rename" })
 
+    ---
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap=true, silent=true, buffer=bufnr, desc = "Definition" })
+    vim.keymap.set('n', 'gr', "<cmd>:Telescope lsp_references<cr>", { noremap=true, silent=true, buffer=bufnr, desc = "References" })
+    vim.keymap.set('n', '?', vim.lsp.buf.hover, { noremap=true, silent=true, buffer=bufnr, desc = "Hover" })
+
     -- Server capabilities spec:
     -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
     if client.server_capabilities.documentHighlightProvider then
@@ -65,3 +70,13 @@ require("mason-lspconfig").setup_handlers {
     })
   end
 }
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {border = 'rounded'}
+)
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {border = 'rounded'}
+)

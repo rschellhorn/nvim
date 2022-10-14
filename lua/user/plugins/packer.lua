@@ -49,11 +49,27 @@ packer.init {
 return packer.startup(function(use)
   use "wbthomason/packer.nvim"
 
-  use "tpope/vim-rails"
-  use "slim-template/vim-slim"
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
-  use "Mofiqul/dracula.nvim"
-  use "ellisonleao/gruvbox.nvim"
+  -- use "tpope/vim-rails"
+  -- use "slim-template/vim-slim"
+
+  -- use "Mofiqul/dracula.nvim"
+  -- use "ellisonleao/gruvbox.nvim"
+
+  use {
+    "projekt0n/github-nvim-theme",
+    config = function()
+      require("github-theme").setup {
+        theme_style = "dark_default",
+        overrides = function(c)
+          return {
+            TSType = { fg = c.syntax.constant },
+          }
+        end
+      }
+    end
+  }
 
   use {
     "williamboman/mason.nvim",
@@ -120,7 +136,9 @@ return packer.startup(function(use)
     run = ':TSUpdate',
     requires = {
       "RRethy/nvim-treesitter-endwise",
-      "JoosepAlviste/nvim-ts-context-commentstring"
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "nvim-treesitter/playground",
+      "p00f/nvim-ts-rainbow"
     }
   }
 

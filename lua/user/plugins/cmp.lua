@@ -35,6 +35,12 @@ cmp.setup({
   completion = {
     completeopt = 'menu,menuone,noinsert',
   },
+  enabled = function()
+    local context = require("cmp.config.context")
+    return not (
+      context.in_treesitter_capture("comment") or context.in_syntax_group("Comment")
+    )
+  end,
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)
