@@ -5,12 +5,20 @@ end
 
 neotest.setup {
   adapters = {
-    require('neotest-rspec')
+    require("neotest-plenary"),
+    require('neotest-rspec'),
   },
   icons = {
     passed = "",
     running = "",
     failed = "",
     unknown = "",
+
+    expanded = "",
+    child_prefix = "",
+    child_indent = "",
+    final_child_prefix = "",
+    non_collapsible = "",
+    collapsed = "",
   }
 }

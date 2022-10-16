@@ -58,13 +58,21 @@ return packer.startup(function(use)
   -- use "ellisonleao/gruvbox.nvim"
 
   use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function()
+      require('lualine').setup()
+    end
+  }
+
+  use {
     "projekt0n/github-nvim-theme",
     config = function()
       require("github-theme").setup {
         theme_style = "dark_default",
         overrides = function(c)
           return {
-            TSType = { fg = c.syntax.constant },
+            Type = { fg = c.syntax.constant },
           }
         end
       }
@@ -75,6 +83,18 @@ return packer.startup(function(use)
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig"
+  }
+
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
   }
 
   use {
@@ -122,6 +142,7 @@ return packer.startup(function(use)
       "antoinemadec/FixCursorHold.nvim",
       "mfussenegger/nvim-dap",
       "nvim-lua/plenary.nvim",
+      "nvim-neotest/neotest-plenary",
       "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
       "suketa/nvim-dap-ruby"
@@ -174,14 +195,6 @@ return packer.startup(function(use)
       'hrsh7th/cmp-vsnip',
       'hrsh7th/vim-vsnip'
     }
-  }
-
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-    config = function()
-      require('lualine').setup()
-    end
   }
 
   use {
