@@ -59,23 +59,23 @@ return packer.startup(function(use)
 
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    requires = { 'kyazdani42/nvim-web-devicons' },
     config = function()
-      require('lualine').setup()
+      require('lualine').setup {
+        options = {
+          theme = 'tokyonight'
+        }
+      }
     end
   }
 
   use {
-    "projekt0n/github-nvim-theme",
+    "folke/tokyonight.nvim",
     config = function()
-      require("github-theme").setup {
-        theme_style = "dark_default",
-        overrides = function(c)
-          return {
-            Type = { fg = c.syntax.constant },
-          }
-        end
-      }
+      require("tokyonight").setup({
+        style = "night"
+      })
+      vim.cmd[[colorscheme tokyonight]]
     end
   }
 
@@ -170,7 +170,28 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-    }
+    },
+    config = function()
+      require('neo-tree').setup({
+        filesystem = {
+          follow_current_file = true,
+          filtered_items = {
+            show_hidden_count = false,
+          },
+          use_libuv_file_watcher = true,
+        },
+        buffers = {
+          follow_current_file = true,
+        },
+        source_selector = {
+          winbar = true,
+        },
+        window = {
+          position = "left",
+          width = 40,
+        }
+      })
+    end
   }
 
   use {
