@@ -47,15 +47,22 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  use "wbthomason/packer.nvim"
+  use { "wbthomason/packer.nvim" }
 
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use {
+    "sindrets/diffview.nvim",
+    requires = "nvim-lua/plenary.nvim"
+  }
 
-  -- use "tpope/vim-rails"
-  -- use "slim-template/vim-slim"
-
-  -- use "Mofiqul/dracula.nvim"
-  -- use "ellisonleao/gruvbox.nvim"
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup {
+        show_current_context = true,
+        show_current_context_start = true,
+      }
+    end
+  }
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -72,10 +79,10 @@ return packer.startup(function(use)
   use {
     "folke/tokyonight.nvim",
     config = function()
-      require("tokyonight").setup({
+      require("tokyonight").setup {
         style = "night"
-      })
-      vim.cmd[[colorscheme tokyonight]]
+      }
+      vim.cmd [[colorscheme tokyonight]]
     end
   }
 
@@ -109,7 +116,10 @@ return packer.startup(function(use)
 
   use {
     "akinsho/toggleterm.nvim",
-    tag = "*"
+    tag = "*",
+    config = function()
+      require("toggleterm").setup()
+    end
   }
 
   use {
@@ -148,7 +158,26 @@ return packer.startup(function(use)
       "suketa/nvim-dap-ruby"
     },
     config = function()
-      require('dap-ruby').setup()
+      require("dap-ruby").setup()
+      require("neotest").setup {
+        adapters = {
+          require("neotest-plenary"),
+          require('neotest-rspec'),
+        },
+        icons = {
+          passed = "",
+          running = "",
+          failed = "",
+          unknown = "",
+
+          expanded = "",
+          child_prefix = "",
+          child_indent = "  ",
+          final_child_prefix = "",
+          non_collapsible = "",
+          collapsed = "",
+        }
+      }
     end
   }
 
@@ -204,6 +233,16 @@ return packer.startup(function(use)
     config = function()
       require('telescope').load_extension('gh')
       require 'telescope'.load_extension('project')
+      require('telescope').setup {
+        defaults = {},
+        extensions = {
+          project = {
+            base_dirs = {
+              '~/code',
+            }
+          }
+        }
+      }
     end
   }
 
