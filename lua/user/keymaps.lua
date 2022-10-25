@@ -23,7 +23,8 @@ end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-local wk = require("which-key")
+local wk_status_ok, wk = pcall(require, "which-key")
+if not wk_status_ok then return end
 wk.register({
   ["<esc>"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   b = {
@@ -77,13 +78,16 @@ wk.register({
   },
   s = {
     name = "Search",
+    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    c = { function() require("telescope.builtin").grep_string() end, "Word under cursor" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-    t = { "<cmd>Telescope live_grep<cr>", "Text" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    o = { function() require("telescope.builtin").oldfiles() end, "History" },
     p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Projects" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    t = { "<cmd>Telescope live_grep<cr>", "Text" },
+    w = { function() require("telescope.builtin").live_grep() end, "Search words" }
   },
   t = {
     name = "Tests",
