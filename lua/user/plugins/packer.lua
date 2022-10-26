@@ -56,12 +56,8 @@ return packer.startup(function(use)
 
   use {
     "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("indent_blankline").setup {
-        show_current_context = true,
-        show_current_context_start = true,
-      }
-    end
+    event = "BufEnter",
+    config = function() require "configs.indent-blankline" end
   }
 
   use {
@@ -141,9 +137,8 @@ return packer.startup(function(use)
 
   use {
     "stevearc/dressing.nvim",
-    config = function()
-      require("dressing").setup()
-    end
+    event = "UIEnter",
+    config = function() require "configs.dressing" end,
   }
 
   use {
@@ -181,15 +176,25 @@ return packer.startup(function(use)
     end
   }
 
+  use { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" }
+  use { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" }
+  use { "nvim-treesitter/playground", after = "nvim-treesitter" }
+  use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ':TSUpdate',
-    requires = {
-      "RRethy/nvim-treesitter-endwise",
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      "nvim-treesitter/playground",
-      "p00f/nvim-ts-rainbow"
-    }
+    run = ":TSUpdate",
+    event = "BufEnter",
+    cmd = {
+      "TSInstall",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSDisableAll",
+      "TSEnableAll",
+    },
+    config = function() require "configs.treesitter" end,
   }
 
   use {
@@ -259,16 +264,13 @@ return packer.startup(function(use)
 
   use {
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require('gitsigns').setup()
-    end
+    event = "BufEnter",
+    config = function() require "configs.gitsigns" end,
   }
 
   use {
     "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup()
-    end,
+    config = function() require "configs.which-key" end,
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
