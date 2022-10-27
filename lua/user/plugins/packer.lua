@@ -74,12 +74,7 @@ return packer.startup(function(use)
 
   use {
     "folke/tokyonight.nvim",
-    config = function()
-      require("tokyonight").setup {
-        style = "night"
-      }
-      vim.cmd [[colorscheme tokyonight]]
-    end
+    config = function() require "configs.tokyonight" end,
   }
 
   use {
@@ -91,13 +86,7 @@ return packer.startup(function(use)
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
+    config = function() require "configs.trouble" end,
   }
 
   use {
@@ -112,10 +101,9 @@ return packer.startup(function(use)
 
   use {
     "akinsho/toggleterm.nvim",
-    tag = "*",
-    config = function()
-      require("toggleterm").setup()
-    end
+    cmd = "ToggleTerm",
+    module = { "toggleterm", "toggleterm.terminal" },
+    config = function() require "configs.toggleterm" end,
   }
 
   use {
@@ -130,9 +118,8 @@ return packer.startup(function(use)
 
   use {
     "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end
+    event = "BufEnter",
+    config = function() require "configs.comment" end,
   }
 
   use {
@@ -152,28 +139,7 @@ return packer.startup(function(use)
       "olimorris/neotest-rspec",
       "suketa/nvim-dap-ruby"
     },
-    config = function()
-      require("dap-ruby").setup()
-      require("neotest").setup {
-        adapters = {
-          require("neotest-plenary"),
-          require('neotest-rspec'),
-        },
-        icons = {
-          passed = "",
-          running = "",
-          failed = "",
-          unknown = "",
-
-          expanded = "",
-          child_prefix = "",
-          child_indent = "  ",
-          final_child_prefix = "",
-          non_collapsible = "",
-          collapsed = "",
-        }
-      }
-    end
+    config = function() require "configs.neotest" end,
   }
 
   use { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" }

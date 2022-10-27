@@ -5,13 +5,12 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.opt.background = "dark"
-vim.opt.clipboard = "unnamedplus"
-vim.opt.cmdheight = 0
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.clipboard = "unnamedplus" -- connection to the system clipboard
+vim.opt.cmdheight = 0  -- hide command line unless needed
+vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.cursorline = true
 vim.opt.encoding = "utf-8"
-vim.opt.expandtab = true
+vim.opt.expandtab = true -- Enable the use of space in tab
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "syntax"
 vim.opt.laststatus = 3
