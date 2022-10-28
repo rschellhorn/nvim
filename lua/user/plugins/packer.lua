@@ -77,10 +77,23 @@ return packer.startup(function(use)
     config = function() require "configs.tokyonight" end,
   }
 
+  -- Built-in LSP
+  use {
+    "neovim/nvim-lspconfig",
+    config = function() require "configs.lspconfig" end
+  }
+
+  -- Package Manager
   use {
     "williamboman/mason.nvim",
+    config = function() require "configs.mason" end,
+  }
+
+  -- LSP manager
+  use {
     "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig"
+    after = { "mason.nvim", "nvim-lspconfig" },
+    config = function() require "configs.mason-lspconfig" end,
   }
 
   use {
@@ -225,7 +238,8 @@ return packer.startup(function(use)
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-vsnip',
       'hrsh7th/vim-vsnip'
-    }
+    },
+    config = function() require "configs.cmp" end,
   }
 
   use {

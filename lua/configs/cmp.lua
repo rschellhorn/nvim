@@ -1,7 +1,8 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-  return
-end
+if not cmp_status_ok then return end
+
+local context_status_ok, context = pcall(require, "cmp.config.context")
+if not context_status_ok then return end
 
 local kind_icons = {
   Class = " ",
@@ -36,7 +37,6 @@ cmp.setup({
     completeopt = 'menu,menuone,noinsert',
   },
   enabled = function()
-    local context = require("cmp.config.context")
     return not (
       context.in_treesitter_capture("comment") or context.in_syntax_group("Comment")
     )

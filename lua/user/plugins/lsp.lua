@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap=true, silent=true, buffer=bufnr, desc = "Definition" })
     vim.keymap.set('n', 'gr', "<cmd>:Telescope lsp_references<cr>", { noremap=true, silent=true, buffer=bufnr, desc = "References" })
     vim.keymap.set('n', '?', vim.lsp.buf.hover, { noremap=true, silent=true, buffer=bufnr, desc = "Hover" })
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { noremap=true, silent=true, buffer=bufnr, desc = "Signature Help" })
 
     -- Server capabilities spec:
     -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
