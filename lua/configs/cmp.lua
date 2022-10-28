@@ -32,10 +32,10 @@ local kind_icons = {
   Variable = " ",
 }
 
-cmp.setup({
-  completion = {
-    completeopt = 'menu,menuone,noinsert',
-  },
+local border_opts =
+  { border = "single", winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None" }
+
+cmp.setup {
   enabled = function()
     return not (
       context.in_treesitter_capture("comment") or context.in_syntax_group("Comment")
@@ -46,7 +46,13 @@ cmp.setup({
       vim.fn["vsnip#anonymous"](args.body)
     end
   },
+  window = {
+    completion = cmp.config.window.bordered(border_opts),
+    documentation = cmp.config.window.bordered(border_opts),
+  },
   mapping = cmp.mapping.preset.insert({
+    ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+    ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
@@ -67,9 +73,8 @@ cmp.setup({
         nvim_lsp = "[LSP]",
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
       })[entry.source.name]
       return vim_item
     end
   }
-})
+}

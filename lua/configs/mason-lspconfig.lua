@@ -20,7 +20,7 @@ mason_lspconfig.setup_handlers {
     }
   end,
   ["sumneko_lua"] = function()
-    lspconfig.sumneko_lua.setup({
+    lspconfig.sumneko_lua.setup {
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -32,6 +32,6 @@ mason_lspconfig.setup_handlers {
           telemetry = {enable = false}
         }
       }
-    })
+    }
   end
 }

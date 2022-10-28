@@ -89,6 +89,20 @@ return packer.startup(function(use)
     config = function() require "configs.mason-lspconfig" end,
   }
 
+  -- Formatting and linting
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    event = "BufEnter",
+    config = function() require "configs.null-ls" end,
+  }
+
+  -- null-ls manager
+  use {
+    "jayp0521/mason-null-ls.nvim",
+    after = { "mason.nvim", "null-ls.nvim" },
+    config = function() require "configs.mason-null-ls" end,
+  }
+
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -154,7 +168,7 @@ return packer.startup(function(use)
   use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    run = "TSUpdate",
     event = "BufEnter",
     cmd = {
       "TSInstall",
