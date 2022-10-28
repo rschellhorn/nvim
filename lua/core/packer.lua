@@ -63,13 +63,7 @@ return packer.startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup {
-        options = {
-          theme = 'tokyonight'
-        }
-      }
-    end
+    config = function() require "configs.lualine" end,
   }
 
   use {
@@ -80,7 +74,6 @@ return packer.startup(function(use)
   -- Built-in LSP
   use {
     "neovim/nvim-lspconfig",
-    config = function() require "configs.lspconfig" end
   }
 
   -- Package Manager

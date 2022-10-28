@@ -4,7 +4,7 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local config = {
+vim.diagnostic.config {
   -- Enable virtual text
   virtual_text = true,
   -- show signs
@@ -23,5 +23,3 @@ local config = {
     prefix = "",
   },
 }
-
-vim.diagnostic.config(config)

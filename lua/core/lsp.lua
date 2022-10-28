@@ -43,33 +43,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require("lspconfig")
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("mason-lspconfig").setup_handlers {
-  function (server_name) -- default handler (optional)
-    lspconfig[server_name].setup {
-      capabilities = capabilities
-    }
-  end,
-  ["sumneko_lua"] = function()
-    lspconfig.sumneko_lua.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          diagnostics = {
-            -- Get the language server to recognize the 'vim', 'use' global
-            globals = {'vim', 'use', 'require'},
-          },
-          -- Do not send telemetry data containing a randomized but unique identifier
-          telemetry = {enable = false}
-        }
-      }
-    })
-  end
-}
-
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
   vim.lsp.handlers.hover,
   {border = 'rounded'}
