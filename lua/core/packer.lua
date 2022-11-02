@@ -67,6 +67,11 @@ return packer.startup(function(use)
   }
 
   use {
+    "rgroli/other.nvim",
+    config = function() require "configs.other" end,
+  }
+
+  use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function() require "configs.lualine" end,
