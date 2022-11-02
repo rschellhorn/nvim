@@ -61,6 +61,12 @@ return packer.startup(function(use)
   }
 
   use {
+    "scalameta/nvim-metals",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function() require "configs.metals" end,
+  }
+
+  use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function() require "configs.lualine" end,
