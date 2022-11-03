@@ -172,7 +172,6 @@ return packer.startup(function(use)
   use { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" }
   use { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" }
   use { "nvim-treesitter/playground", after = "nvim-treesitter" }
-  use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
   use {
     "nvim-treesitter/nvim-treesitter",
     run = "TSUpdate",
@@ -208,20 +207,7 @@ return packer.startup(function(use)
       'nvim-telescope/telescope-github.nvim',
       'nvim-telescope/telescope-project.nvim',
     },
-    config = function()
-      require('telescope').load_extension('gh')
-      require 'telescope'.load_extension('project')
-      require('telescope').setup {
-        defaults = {},
-        extensions = {
-          project = {
-            base_dirs = {
-              '~/code',
-            }
-          }
-        }
-      }
-    end
+    config = function() require "configs.telescope" end,
   }
 
   use {

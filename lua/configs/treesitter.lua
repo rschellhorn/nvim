@@ -6,6 +6,9 @@ treesitter.setup {
   context_commentstring = {
     enable = true,
   },
+  incremental_selection = {
+    enable = true,
+  },
   indent = {
     enable = false,
   },
@@ -14,8 +17,5 @@ treesitter.setup {
   },
   endwise = {
     enable = true,
-  },
-  rainbow = {
-    enable = false,
   },
 }
