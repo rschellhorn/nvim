@@ -50,6 +50,15 @@ return packer.startup(function(use)
   use { "wbthomason/packer.nvim" }
 
   use {
+    "folke/noice.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function() require "configs.noice" end,
+  }
+
+  use {
     "sindrets/diffview.nvim",
     requires = "nvim-lua/plenary.nvim"
   }
