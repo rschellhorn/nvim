@@ -183,6 +183,7 @@ return packer.startup(function(use)
   use { "nvim-treesitter/playground", after = "nvim-treesitter" }
   use {
     "nvim-treesitter/nvim-treesitter",
+    branch = "v0.8.0",
     run = "TSUpdate",
     event = "BufEnter",
     cmd = {
