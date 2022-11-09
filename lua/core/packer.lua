@@ -165,6 +165,13 @@ return packer.startup(function(use)
   }
 
   use {
+    "rcarriga/nvim-dap-ui",
+    requires = {
+      "mfussenegger/nvim-dap"
+    },
+  }
+
+  use {
     "nvim-neotest/neotest",
     requires = {
       "antoinemadec/FixCursorHold.nvim",
