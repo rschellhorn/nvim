@@ -59,6 +59,10 @@ return packer.startup(function(use)
   }
 
   use {
+    "slim-template/vim-slim"
+  }
+
+  use {
     "sindrets/diffview.nvim",
     requires = "nvim-lua/plenary.nvim"
   }
