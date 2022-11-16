@@ -59,6 +59,11 @@ return packer.startup(function(use)
   }
 
   use {
+    "gorbit99/codewindow.nvim",
+    config = function() require "configs.codewindow" end,
+  }
+
+  use {
     "slim-template/vim-slim"
   }
 
