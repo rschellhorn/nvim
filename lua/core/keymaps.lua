@@ -1,4 +1,4 @@
- -- Better window movement
+-- Better window movement
 vim.keymap.set('n', '<cr>', ':nohlsearch<cr>')
 vim.keymap.set('n', '<A-Left>', '<C-W>h')
 vim.keymap.set('n', '<A-Down>', '<C-W>j')
