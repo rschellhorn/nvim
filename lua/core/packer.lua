@@ -49,45 +49,45 @@ packer.init {
 return packer.startup(function(use)
   use { "wbthomason/packer.nvim" }
 
-  use {
-    "folke/noice.nvim",
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    config = function() require "configs.noice" end,
-  }
-
-  use {
-    "gorbit99/codewindow.nvim",
-    config = function() require "configs.codewindow" end,
-  }
-
+  -- use {
+  --   "folke/noice.nvim",
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "rcarriga/nvim-notify",
+  --   },
+  --   config = function() require "configs.noice" end,
+  -- }
+  --
+  -- use {
+  --   "gorbit99/codewindow.nvim",
+  --   config = function() require "configs.codewindow" end,
+  -- }
+  --
   use {
     "slim-template/vim-slim"
   }
-
-  use {
-    "sindrets/diffview.nvim",
-    requires = "nvim-lua/plenary.nvim"
-  }
-
-  use {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufEnter",
-    config = function() require "configs.indent-blankline" end
-  }
-
-  use {
-    "scalameta/nvim-metals",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function() require "configs.metals" end,
-  }
-
-  use {
-    "rgroli/other.nvim",
-    config = function() require "configs.other" end,
-  }
+  --
+  -- use {
+  --   "sindrets/diffview.nvim",
+  --   requires = "nvim-lua/plenary.nvim"
+  -- }
+  --
+  -- use {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   event = "BufEnter",
+  --   config = function() require "configs.indent-blankline" end
+  -- }
+  --
+  -- use {
+  --   "scalameta/nvim-metals",
+  --   requires = { "nvim-lua/plenary.nvim" },
+  --   config = function() require "configs.metals" end,
+  -- }
+  --
+  -- use {
+  --   "rgroli/other.nvim",
+  --   config = function() require "configs.other" end,
+  -- }
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -117,44 +117,44 @@ return packer.startup(function(use)
     after = { "mason.nvim", "nvim-lspconfig" },
     config = function() require "configs.mason-lspconfig" end,
   }
+  --
+  -- -- Formatting and linting
+  -- use {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   event = "BufEnter",
+  --   config = function() require "configs.null-ls" end,
+  -- }
+  --
+  -- -- null-ls manager
+  -- use {
+  --   "jayp0521/mason-null-ls.nvim",
+  --   after = { "mason.nvim", "null-ls.nvim" },
+  --   config = function() require "configs.mason-null-ls" end,
+  -- }
+  --
+  -- use {
+  --   "folke/trouble.nvim",
+  --   requires = "kyazdani42/nvim-web-devicons",
+  --   config = function() require "configs.trouble" end,
+  -- }
 
-  -- Formatting and linting
-  use {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = "BufEnter",
-    config = function() require "configs.null-ls" end,
-  }
+  -- use {
+  --   'weilbith/nvim-code-action-menu',
+  --   cmd = 'CodeActionMenu',
+  -- }
 
-  -- null-ls manager
-  use {
-    "jayp0521/mason-null-ls.nvim",
-    after = { "mason.nvim", "null-ls.nvim" },
-    config = function() require "configs.mason-null-ls" end,
-  }
-
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function() require "configs.trouble" end,
-  }
-
-  use {
-    'weilbith/nvim-code-action-menu',
-    cmd = 'CodeActionMenu',
-  }
-
-  use {
-    'kosayoda/nvim-lightbulb',
-    requires = 'antoinemadec/FixCursorHold.nvim',
-  }
-
-  use {
-    "akinsho/toggleterm.nvim",
-    cmd = "ToggleTerm",
-    module = { "toggleterm", "toggleterm.terminal" },
-    config = function() require "configs.toggleterm" end,
-  }
-
+  -- use {
+  --   'kosayoda/nvim-lightbulb',
+  --   requires = 'antoinemadec/FixCursorHold.nvim',
+  -- }
+  --
+  -- use {
+  --   "akinsho/toggleterm.nvim",
+  --   cmd = "ToggleTerm",
+  --   module = { "toggleterm", "toggleterm.terminal" },
+  --   config = function() require "configs.toggleterm" end,
+  -- }
+  --
   use {
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -167,51 +167,50 @@ return packer.startup(function(use)
     config = function() require "configs.comment" end,
   }
 
-  use {
-    "stevearc/dressing.nvim",
-    event = "UIEnter",
-    config = function() require "configs.dressing" end,
-  }
-
-  use {
-    "rcarriga/nvim-dap-ui",
-    requires = {
-      "mfussenegger/nvim-dap"
-    },
-  }
-
-  use {
-    "nvim-neotest/neotest",
-    requires = {
-      "antoinemadec/FixCursorHold.nvim",
-      "mfussenegger/nvim-dap",
-      "nvim-lua/plenary.nvim",
-      "nvim-neotest/neotest-plenary",
-      "nvim-treesitter/nvim-treesitter",
-      "olimorris/neotest-rspec",
-      "suketa/nvim-dap-ruby"
-    },
-    config = function() require "configs.neotest" end,
-  }
-
-  use { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" }
-  use { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" }
-  use { "nvim-treesitter/playground", after = "nvim-treesitter" }
+  -- use {
+  --   "stevearc/dressing.nvim",
+  --   event = "UIEnter",
+  --   config = function() require "configs.dressing" end,
+  -- }
+  --
+  -- use {
+  --   "rcarriga/nvim-dap-ui",
+  --   requires = {
+  --     "mfussenegger/nvim-dap"
+  --   },
+  -- }
+  --
+  -- use {
+  --   "nvim-neotest/neotest",
+  --   requires = {
+  --     "antoinemadec/FixCursorHold.nvim",
+  --     "mfussenegger/nvim-dap",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-neotest/neotest-plenary",
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "olimorris/neotest-rspec",
+  --     "suketa/nvim-dap-ruby"
+  --   },
+  --   config = function() require "configs.neotest" end,
+  -- }
+  --
+  -- use { "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" }
+  -- use { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" }
+  -- use { "nvim-treesitter/playground", after = "nvim-treesitter" }
   use {
     "nvim-treesitter/nvim-treesitter",
-    branch = "v0.8.0",
-    run = "TSUpdate",
-    event = "BufEnter",
-    cmd = {
-      "TSInstall",
-      "TSInstallInfo",
-      "TSInstallSync",
-      "TSUninstall",
-      "TSUpdate",
-      "TSUpdateSync",
-      "TSDisableAll",
-      "TSEnableAll",
-    },
+    -- -- run = "TSUpdate",
+    -- event = "BufEnter",
+    -- cmd = {
+    --   "TSInstall",
+    --   "TSInstallInfo",
+    --   "TSInstallSync",
+    --   "TSUninstall",
+    --   "TSUpdate",
+    --   "TSUpdateSync",
+    --   "TSDisableAll",
+    --   "TSEnableAll",
+    -- },
     config = function() require "configs.treesitter" end,
   }
 
@@ -225,17 +224,17 @@ return packer.startup(function(use)
     },
     config = function() require "configs.neo-tree" end,
   }
-
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-github.nvim',
-      'nvim-telescope/telescope-project.nvim',
-    },
-    config = function() require "configs.telescope" end,
-  }
-
+  --
+  -- use {
+  --   'nvim-telescope/telescope.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-telescope/telescope-github.nvim',
+  --     'nvim-telescope/telescope-project.nvim',
+  --   },
+  --   config = function() require "configs.telescope" end,
+  -- }
+  --
   use {
     'hrsh7th/nvim-cmp',
     requires = {
