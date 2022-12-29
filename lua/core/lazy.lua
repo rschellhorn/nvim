@@ -13,10 +13,10 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup {
   {
-    "folke/tokyonight.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    config = function() require "configs.tokyonight" end,
+    config = function() require "configs.kanagawa" end,
   },
 
   {
@@ -43,13 +43,19 @@ require("lazy").setup {
 
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function() require "configs.lualine" end,
   },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
+    keys = {
+      { "<leader>wb", "<cmd>Neotree source=buffers<cr>", desc = "Buffers" },
+      { "<leader>we", "<cmd>Neotree toggle<cr>", desc = "Explorer" },
+      { "<leader>wg", "<cmd>Neotree source=git_status<cr>", desc = "Git" },
+    },
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
@@ -62,15 +68,15 @@ require("lazy").setup {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     keys = {
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
       { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix" },
-      { "*", "<cmd>Telescope grep_string<cr>", desc = "Grep Word" },
+      { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "Grep Word" },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "BurntSushi/ripgrep",
-      "nvim-telescope/telescope-fzf-native.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     }
   },
 
@@ -90,6 +96,17 @@ require("lazy").setup {
   {
     "lewis6991/gitsigns.nvim",
     event = "BufEnter",
+    keys = {
+      { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Git Diff" },
+      { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Hunk" },
+      { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>", desc = "Prev Hunk" },
+      { "<leader>gl", "<cmd>Gitsigns blame_line<cr>", desc = "Blame" },
+      { "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
+      { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset Hunk" },
+      { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", desc = "Reset Buffer" },
+      { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk" },
+      { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk" },
+    },
     config = function() require "configs.gitsigns" end,
   },
 
