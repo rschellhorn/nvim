@@ -22,6 +22,9 @@ require("lazy").setup {
   {
     "nvim-treesitter/nvim-treesitter",
     event = "BufEnter",
+    keys = {
+      { "<leader>Ti", ":TSConfigInfo<cr>", "Info" },
+    },
     config = function() require "configs.treesitter" end,
   },
 
@@ -53,6 +56,22 @@ require("lazy").setup {
       "MunifTanjim/nui.nvim",
     },
     config = function() require "configs.neo-tree" end,
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    keys = {
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files" },
+      { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix" },
+      { "*", "<cmd>Telescope grep_string<cr>", desc = "Grep Word" },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "BurntSushi/ripgrep",
+      "nvim-telescope/telescope-fzf-native.nvim",
+    }
   },
 
   {

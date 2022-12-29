@@ -13,6 +13,7 @@ wk.setup {
 }
 
 wk.register({
+  f = "Find",
   g = {
     name = "Git",
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
@@ -31,10 +32,7 @@ wk.register({
       "Git Diff",
     },
   },
-  T = {
-    name = "Treesitter",
-    i = { ":TSConfigInfo<cr>", "Info" },
-  },
+  T = "Treesitter",
   w = {
     name = "Windows",
     b = { "<cmd>Neotree source=buffers<cr>", "Buffers" },
