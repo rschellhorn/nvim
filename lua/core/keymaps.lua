@@ -9,3 +9,7 @@ vim.keymap.set('n', '<A-Right>', '<C-W>l')
 vim.keymap.set("n", "<C-s>", "<c-u>:update<cr>")
 vim.keymap.set("v", "<C-s>", "<c-c>:update<cr>")
 vim.keymap.set("i", "<C-s>", "<c-o>:update<cr>")
+
+-- Windows
+vim.keymap.set("n", "<leader>wl", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>wm", "<cmd>Mason<cr>", { desc = "Mason" })

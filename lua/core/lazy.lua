@@ -37,6 +37,7 @@ require("lazy").setup {
         config = function() require "configs.mason" end,
       }
     },
+    command = "Mason",
     event = "InsertEnter",
     config = function() require "configs.mason-lspconfig" end,
   },
