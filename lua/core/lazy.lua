@@ -37,8 +37,6 @@ require("lazy").setup {
         config = function() require "configs.mason" end,
       }
     },
-    command = "Mason",
-    event = "InsertEnter",
     config = function() require "configs.mason-lspconfig" end,
   },
 
@@ -95,6 +93,23 @@ require("lazy").setup {
   },
 
   {
+    "folke/which-key.nvim",
+    config = function() require "configs.which-key" end,
+  },
+
+  {
+    "stevearc/aerial.nvim",
+    keys = {
+      { "<leader>wo", "<cmd>AerialToggle<cr>", desc = "Toggle Outline" },
+    },
+    config = function()
+      require("aerial").setup {
+        backends = { "lsp", "treesitter", "markdown", "man" },
+      }
+    end,
+  },
+
+  {
     "lewis6991/gitsigns.nvim",
     event = "BufEnter",
     keys = {
@@ -121,11 +136,6 @@ require("lazy").setup {
     "numToStr/Comment.nvim",
     event = "BufEnter",
     config = function() require "configs.comment" end,
-  },
-
-  {
-    "folke/which-key.nvim",
-    config = function() require "configs.which-key" end,
   },
 
   {
