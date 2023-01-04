@@ -25,6 +25,9 @@ require("lazy").setup {
     keys = {
       { "<leader>Ti", ":TSConfigInfo<cr>", "Info" },
     },
+    dependencies = {
+      "RRethy/nvim-treesitter-endwise",
+    },
     config = function() require "configs.treesitter" end,
   },
 
@@ -41,7 +44,7 @@ require("lazy").setup {
   },
 
   {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function() require "configs.lualine" end,
   },
@@ -67,6 +70,7 @@ require("lazy").setup {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     keys = {
+      { "<leader>fa", "<cmd>Telescope<cr>", desc = "Any" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
       { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix" },
@@ -74,14 +78,21 @@ require("lazy").setup {
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-github.nvim",
       "BurntSushi/ripgrep",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    }
+    },
+    config = function()
+      require('telescope').load_extension('gh')
+    end
   },
 
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
+    keys = {
+      { "<leader>wt", "<cmd>TroubleToggle<cr>", desc = "Trouble" },
+    },
     config = true,
   },
 
