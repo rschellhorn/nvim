@@ -80,6 +80,12 @@ require("lazy").setup {
   },
 
   {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+    config = true,
+  },
+
+  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'hrsh7th/cmp-buffer',
@@ -104,7 +110,7 @@ require("lazy").setup {
     },
     config = function()
       require("aerial").setup {
-        backends = { "lsp", "treesitter", "markdown", "man" },
+        backends = { "treesitter", "lsp", "markdown", "man" },
       }
     end,
   },

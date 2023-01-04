@@ -2,7 +2,14 @@ local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status_ok then return end
 
 treesitter.setup {
-  ensure_installed = { "elixir", "lua", "ruby", "typescript", "yaml" },
+  ensure_installed = {
+    "elixir",
+    "lua",
+    "ruby",
+    "typescript",
+    "yaml",
+    "vim",
+  },
   context_commentstring = {
     enable = true,
   },
