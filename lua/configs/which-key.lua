@@ -15,6 +15,8 @@ wk.setup {
 wk.register({
   f = "Find",
   g = "Git",
+  l = "Language",
+  n = "Navigate",
   T = "Treesitter",
   w = "Windows",
 }, { prefix = "<leader>" })

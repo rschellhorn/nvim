@@ -156,6 +156,29 @@ require("lazy").setup {
   },
 
   {
+    "rgroli/other.nvim",
+    keys = {
+      { "<leader>na", "<cmd>OtherVSplit<cr>", desc ="Alternate" },
+    },
+    config = function()
+      require("other-nvim").setup {
+        mappings = {
+          {
+            pattern = "/app/(.*)/(.*).rb",
+            target = "/spec/%1/%2_spec.rb",
+            context = "spec"
+          },
+          {
+            pattern = "/spec/(.*)/(.*)_spec.rb",
+            target = "/app/%1/%2.rb",
+            context = "spec"
+          },
+        },
+      }
+    end
+  },
+
+  {
     "slim-template/vim-slim",
     ft = "slim",
   }
